@@ -23,7 +23,7 @@ class MapViewController: UIViewController {
         self.checkButton.isEnabled = false
         let secondsToDelay = 4.0
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsToDelay) {
-            print("Returned points")
+            //print("Returned points")
             
             self.checkButton.isEnabled = true
             
@@ -42,8 +42,8 @@ class MapViewController: UIViewController {
                 
                 annotations.append(annotation)
                 
-                print(point.getState())
-                point.printWeather()
+                //print(point.getState())
+                //point.printWeather()
                 
             }
             self.mapView.removeAnnotations(self.mapView.annotations)
@@ -75,13 +75,21 @@ class MapViewController: UIViewController {
 
     func CalculateGridSize(delta: CLLocationDegrees) -> Int {
         print("delta:", delta)
-        if (delta > 15) {
+        if (delta > 54) {
             return 7
-        }else if (delta <= 15 && delta > 8) {
+        }
+        else if (delta <= 54 && delta > 15) {
+            return 6
+        }
+        else if (delta <= 15 && delta > 8) {
             return 5
-        } else if (delta <= 8 && delta > 4.2) {
+        }
+        else if (delta <= 8 && delta > 5.5) {
+            return 4
+        }
+        else if (delta <= 5.5 && delta > 3.2) {
             return 3
-        } else if (delta <= 4.2 && delta > 0.9) {
+        } else if (delta <= 3.2 && delta > 0.9) {
             return 2
         }
         return 1

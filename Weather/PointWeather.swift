@@ -47,7 +47,7 @@ class PointWeather {
                     return
                 }
                 
-                print("Raw data:\n\(data)\n")
+                //print("Raw data:\n\(data)\n")
                 
                 
                 do {
