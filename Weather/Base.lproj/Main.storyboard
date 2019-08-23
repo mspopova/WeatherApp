@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kkY-o3-j9G">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Map View Controller-->
+        <scene sceneID="hjl-2a-qjG">
+            <objects>
+                <viewController id="kkY-o3-j9G" customClass="MapViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="D2S-pc-gXf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YYr-WP-XuW">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ELD-1R-b7u">
+                                <rect key="frame" x="111.5" y="592" width="152" height="55"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQv-4v-Dh6">
+                                        <rect key="frame" x="0.0" y="0.0" width="152" height="29"/>
+                                        <color key="backgroundColor" red="0.99893802399999998" green="0.92852813010000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="152" id="4Y3-dH-GT3"/>
+                                            <constraint firstAttribute="height" constant="29" id="8P2-L2-Hgp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="17"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Check weather⛅️">
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="getCenter:" destination="kkY-o3-j9G" eventType="touchUpInside" id="chS-kZ-jBU"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grid step: nil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Caf-LW-bmM">
+                                        <rect key="frame" x="32.5" y="37" width="87" height="18"/>
+                                        <color key="backgroundColor" red="0.99893802399999998" green="0.92852813010000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dzB-Ac-KMW" firstAttribute="bottom" secondItem="ELD-1R-b7u" secondAttribute="bottom" constant="20" id="Ids-4O-JNp"/>
+                            <constraint firstItem="ELD-1R-b7u" firstAttribute="centerX" secondItem="dzB-Ac-KMW" secondAttribute="centerX" id="kGz-Be-Ao4"/>
+                            <constraint firstItem="YYr-WP-XuW" firstAttribute="bottom" secondItem="dzB-Ac-KMW" secondAttribute="bottom" id="nZG-6k-X8t"/>
+                            <constraint firstItem="YYr-WP-XuW" firstAttribute="trailing" secondItem="dzB-Ac-KMW" secondAttribute="trailing" id="pjo-Qt-rk7"/>
+                            <constraint firstItem="YYr-WP-XuW" firstAttribute="top" secondItem="D2S-pc-gXf" secondAttribute="top" id="syS-Jk-D82"/>
+                            <constraint firstItem="YYr-WP-XuW" firstAttribute="leading" secondItem="dzB-Ac-KMW" secondAttribute="leading" id="yUc-fk-hcP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dzB-Ac-KMW"/>
+                    </view>
+                    <connections>
+                        <outlet property="checkButton" destination="yQv-4v-Dh6" id="kb4-yb-uPl"/>
+                        <outlet property="gridStepLabel" destination="Caf-LW-bmM" id="BUs-hT-TRc"/>
+                        <outlet property="mapView" destination="YYr-WP-XuW" id="yKv-UN-M9s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MfQ-pR-Mcx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="964" y="96.7016491754123"/>
+        </scene>
+    </scenes>
+</document>
