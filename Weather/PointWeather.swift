@@ -34,15 +34,10 @@ class PointWeather {
         URLSession.shared.dataTask(with: request, completionHandler: {
             (data: Data?, response: URLResponse?, error: Error?) in
             if let error = error {
-                // Case 1: Error
-                // We got some kind of error while trying to get data from the server.
                 print("Error:\n\(error)")
                 return
             }
             else {
-                // Case 2: Success
-                // We got a response from the server!
-                // print("Data:\n\(data!)")
                 guard let data = data else {
                     return
                 }
@@ -54,7 +49,6 @@ class PointWeather {
                     let json = try JSONDecoder().decode(CurrentLocalWeather.self, from: data)
                     self.city = json.name
                     self.temp = json.main.temp-273
-                    //self.state = json.weather[0].main
                     self.state = WeatherModel.weatherConditionSymbol(fromWeathercode: json.weather[0].id)
                     self.isLoaded = true
                 } catch {

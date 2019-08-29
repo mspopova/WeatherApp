@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import MBProgressHUD
 
 class MapViewController: UIViewController {
     
@@ -22,6 +23,7 @@ class MapViewController: UIViewController {
         
         self.checkButton.isEnabled = false
         let secondsToDelay = 4.0
+        MBProgressHUD.showAdded(to: view, animated: true)
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsToDelay) {
             //print("Returned points")
             
@@ -47,10 +49,12 @@ class MapViewController: UIViewController {
                 
             }
             self.mapView.removeAnnotations(self.mapView.annotations)
+            MBProgressHUD.hide(for: self.view, animated: true)
             self.mapView.showAnnotations(annotations, animated: true)
             
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -123,18 +127,4 @@ class MapViewController: UIViewController {
         return grid
     }
 }
-extension MapViewController: MKMapViewDelegate {
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
-        guard !(annotation is MKUserLocation) else { return nil }
-        
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) as? MKPinAnnotationView
-        
-        if annotationView == nil {
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
-            annotationView?.canShowCallout = true
-        }
-        return annotationView
-    }
-}
+
